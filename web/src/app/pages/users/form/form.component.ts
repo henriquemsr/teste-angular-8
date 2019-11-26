@@ -239,6 +239,7 @@ export class FormComponent implements OnInit {
           this.load = false;
           this.formSend = false;
           this.registerUser = false;
+          this.userId = userN.id;
           err => {
             console.log(err);
             this.toastr.error(err.message, "", {

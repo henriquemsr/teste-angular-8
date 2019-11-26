@@ -5,5 +5,4 @@ export const ENDPOINT = {
     LOGIN: `${back_api}usuario/login`,
     USERS: `${mock_api}users`,
     TECH: `${mock_api}linguagem_favorita`,
-
 };
