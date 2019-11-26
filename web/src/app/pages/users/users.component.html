@@ -1,0 +1,77 @@
+<app-header></app-header>
+<div class="container">
+    <h1 class="text-secondary mt20">Usuários</h1>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-6">
+            <button class="button-info" [ngClass]="{'button-info-selected' : userList === true}"
+                (click)="selectOption(true)">Listar
+                Usuários</button>
+        </div>
+        <div class="col-lg-2 col-md-2 col-6">
+            <button class="button-info" [ngClass]="{'button-info-selected' : userList === -1}"
+                (click)="selectOption(false)">Cadastrar Usuários</button>
+        </div>
+    </div>
+
+    <div class="row mt10" *ngIf="userList === true">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>Data Nascimento</th>
+                        <th>Idade</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of returnedArray">
+                        <td>{{item.nome}}</td>
+                        <td>{{item.sobrenome}}</td>
+                        <td>{{item.data_front}}</td>
+                        <td>{{item.idade}}</td>
+                        <td class="text-center" *ngIf="item.active"><i class="text-success fas fa-power-off"></i></td>
+                        <td class="text-center" *ngIf="!item.active"><i class="text-danger fas fa-power-off"></i></td>
+                        <td class="text-center">
+                            <span class="text-primary link m10 fs1-2" (click)="editUser(item.id)">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                            <span class="text-danger link m10 fs1-2" (click)="openModalDelete(modalDelete, item)">
+                                <i class="far fa-trash-alt"></i>
+                            </span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <pagination *ngIf="users" [totalItems]="users.length" [boundaryLinks]="true" previousText="&lsaquo;"
+            nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [maxSize]="4"
+            (pageChanged)="pageChanged($event)">
+        </pagination>
+
+    </div>
+
+
+</div>
+
+<ng-template #modalDelete class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <p class="text-danger text-center text-uppercase central-h">
+                Deletar este usuário
+            </p>
+        </div>
+        <div class="modal-body">
+            <p class="text-primary central-h text-uppercase">{{singleUser.nome}} {{singleUser.sobrenome}}</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" (click)="deleteUser(singleUser)">
+                <span *ngIf="!load">DELETAR</span>
+                <span *ngIf="load">deletando... <i class="fas fa-spinner fa-spin"></i></span>
+            </button>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,17 @@
+<header>
+    <div>
+        <!-- <span routerLink="/dashboard" routerLinkActive="selected">Dasboard</span> -->
+        <span routerLink="/technologies" routerLinkActive="selected">Tecnologias</span>
+        <span routerLink="/users" routerLinkActive="selected">Usuários</span>
+    </div>
+    <div>
+        <span [ngClass]="{'animated faster slideInRight' : settings}" *ngIf="settings">
+            <button class="logout" (click)="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                sair
+            </button>
+        </span>
+        <span [ngClass]="{'animated faster rotateIn' : !settings}"><i class="fas fa-cog"
+            (click)="showSettings()"></i></span>
+        </div>
+    </header>

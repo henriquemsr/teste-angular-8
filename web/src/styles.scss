@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';
+//my style ->@henriquemendes25
+.link{
+    cursor:pointer;
+}
+.fs1{
+    font-size: 1rem;
+}
+.fs1-2{
+    font-size: 1.2rem;
+}
+.fs1-5{
+    font-size: 1.5rem;
+}
+.m5{
+    margin: 5px;
+}
+.m10{
+    margin: 10px;
+}
+.mt10{
+    margin-top: 10px;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mt30{
+    margin-top: 30px;
+}
+.mt40{
+    margin-top: 50px;
+}
+.mt50{
+    margin-top: 50px;
+}
+.mt100{
+    margin-top: 100px;
+}
+.bold{
+    font-size:bold;
+}
+.central-h{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left-h{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+//colors
+.bg-info{
+    background: #17A2B8!important;
+}
+.title-toast-success{
+    color:#07421c;
+}
+.title-toast-danger{
+    color:#851c13;
+}
+.title-toast-warning{
+    color:#7A6C0F;
+}
+//buttons
+.button-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border-radius: 4px;
+    box-shadow: 2px 5px 10px 0px #d9dada;
+    outline: none;
+    border:1px solid #17A2B8;
+    color:#17A2B8;
+    background: transparent;
+    width:100%;
+    height:35px;
+    transition: .3s;
+}
+.button-info:hover{
+    background: #17A2B8;;
+    color:#fff;
+    box-shadow: 1px 2px 3px 0px #000;
+    transition: .3s;
+}
+.button-info-selected{
+    background: #17A2B8;;
+    color:#fff;
+    box-shadow: 1px 2px 3px 0px #000;
+}

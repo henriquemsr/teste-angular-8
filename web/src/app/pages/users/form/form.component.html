@@ -1,0 +1,102 @@
+<app-header></app-header>
+<div class="container mt40">
+    <div class="left-h">
+        <button class="btn btn-primary" (click)="backPage()">
+            <span><i class="fas fa-arrow-left"></i></span>
+            Voltar
+        </button>
+    </div>
+    <h1 class="lead text-info text-center bold" *ngIf="registerUser">Registrar Usuário</h1>
+    <h1 class="lead text-info text-center bold" *ngIf="!registerUser">Editando Usuário</h1>
+    <form [formGroup]="formUser" class="row mt30">
+
+        <div class="col-lg-4 col-md-4 col-12">
+            <div class="form-group">
+                <label class="text-primary">Nome</label>
+                <input type="text" class="form-control" formControlName="nome">
+                <span *ngIf="formSend">
+                    <span class="text-danger" *ngIf="formUser.controls['nome'].invalid">campo obrigatório</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-12">
+            <div class="form-group">
+                <label class="text-primary">Sobrenome</label>
+                <input type="text" class="form-control" formControlName="sobrenome">
+                <span *ngIf="formSend">
+                    <span class="text-danger" *ngIf="formUser.controls['sobrenome'].invalid">campo obrigatório</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-12">
+            <div class="form-group">
+                <label class="text-primary">Data Nascimento</label>
+                <input type="text" class="form-control" formControlName="data_nascimento" mask="**/**/****">
+                <span *ngIf="formSend">
+                    <span class="text-danger" *ngIf="formUser.controls['data_nascimento'].invalid">campo
+                        obrigatório</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-12">
+            <div class="form-group">
+                <label class="text-primary">Linguagem Favorita:</label>
+                <select class="form-control" formControlName="linguagem_favorita">
+                    <option *ngFor="let item of technologies" [value]="item.id_linguagem">{{item.nome_linguagem}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-12" *ngIf="!registerUser">
+            <div class="form-group">
+                <label class="text-primary">Idade:</label>
+                <input type="text" class="form-control" formControlName="idade">
+            </div>
+        </div>
+        
+
+        <div class="col-lg-4 col-md-4 col-12 box" [ngClass]="{'box-selected' : active}" *ngIf="!registerUser">
+            <label class="text-primary">Status:</label>
+            <div class="wrap-switch-plus-label">
+                <span>
+                    <span>
+                        <label class="switch">
+                            <input class="toggle" type="checkbox" [checked]="active" (change)="changeActive()">
+                            <span class="slider round"></span>
+                        </label>
+                    </span>
+                </span>
+
+                <span>
+                    <label class="bold text-success" *ngIf="active === true">ATIVO</label>
+                    <label class="bold text-danger" *ngIf="active === false">INATIVO</label>
+                </span>
+
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label class="text-primary">Observações</label>
+                <textarea class="form-control" formControlName="obs" cols="100" rows="3"></textarea>
+
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-12">
+            <button class="btn btn-info" *ngIf="registerUser" (click)="saveData()">
+                <span *ngIf="!load">SALVAR</span>
+                <span *ngIf="load">salvando... <i class="fas fa-spinner fa-spin"></i></span>
+            </button>
+            <button class="btn btn-info" *ngIf="!registerUser" (click)="updateData(userId)">
+                <span *ngIf="!load">ALTERAR</span>
+                <span *ngIf="load">alterando... <i class="fas fa-spinner fa-spin"></i></span>
+            </button>
+        </div>
+
+    </form>
+</div>

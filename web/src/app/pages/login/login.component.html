@@ -1,0 +1,31 @@
+<div class="container box-home">
+    <div class="logotipo">
+        <img src="assets/images/logotipo.jpg">
+    </div>
+    <form [formGroup]="formUser" class="row central-h">
+        <div class="col-lg-7 col-md-7 col-12">
+            <div class="form-group">
+                <label class="text-info">E-mail</label>
+                <input type="text" class="form-control" formControlName="email">
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-12">
+            <div class="form-group">
+                <label class="text-info">Senha</label>
+                <input type="password" class="form-control" formControlName="password">
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-12 text-right">
+            <span class="text-primary">Esqueci minha senha</span>
+        </div>
+        <div class="col-lg-7 col-md-7 col-12 mt20">
+            <button class="btn btn-outline-primary btn-block" (click)="logar()" [disabled]="load">
+                <span *ngIf="!load">ENTRAR</span>
+                <span *ngIf="load">entrando... <i class="fas fa-spinner fa-spin"></i></span>
+            </button>
+        </div>
+        <div class="col-lg-7 col-md-7 col-12 text-right mt20">
+            <span class="text-success">Cadastre-se</span>
+        </div>
+    </form>
+</div>
